@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" type="text/css" href="/styles/home.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>URL Shortener</h2>
+
+        
+        <form action="/shortUrl" method="post">
+            <div class="input-group">
+                <label for="fullUrl">Enter the URL:</label>
+                <input type="url" id="fullUrl" placeholder="Enter the URL" name="fullUrl" required />
+            </div>
+            
+            <div class="input-group">
+                <label for="customCode">Custom Code (optional):</label>
+                <input type="text" id="customCode" placeholder="Custom code (optional)" name="customCode" />
+            </div>
+            
+            <div class="input-group">
+                <label for="expireDate">Expiration Date and Time (optional):</label>
+                <input type="datetime-local" id="expireDate" name="expireDate" />
+            </div>
+            
+            
+            <div class="input-group">
+                <input type="submit" value="Convert" />
+            </div>
+
+            <p><a href="/userstats">Back to Dashboard</a></p>
+            <p><a href="/login">Login</a></p>
+        </form>
+    </div>
+</body>
+</html>

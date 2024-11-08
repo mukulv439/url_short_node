@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Short URLs - Stats</title>
+    <!-- Basic CSS Styling for User Stats Page -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        li button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        li button:hover {
+            background-color: #c0392b;
+        }
+
+        .stats {
+            font-size: 14px;
+            color: #888;
+            margin-left: 20px;
+        }
+
+        .action {
+            display: flex;
+            gap: 10px;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+             text-decoration: underline;
+        }
+        .maauto
+        {
+            margin: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container maauto ">
+        <h2>Your Short URLs and Stats</h2>
+        
+        <% if (urls.length === 0) { %>
+            <p>You have no short URLs yet. Start by creating one!</p>
+        <% } else { %>
+            <ul>
+                <% urls.forEach(function(url) { %>
+                    <li>
+                        <div class="url-info">
+                            <a href="<%= url.fullUrl %>" target="_blank"><%= url.shortUrl %></a>
+                            <span class="stats">Visits: <%= url.counts %></span>
+                        </div>
+                        <div class="action">
+                            <form action="/deleteurl" method="POST">
+                                <input type="hidden" name="shortUrl" value="<%= url.shortUrl %>" />
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this URL?');">Delete</button>
+                            </form>
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+
+        <div class="back-link">
+            <p><a href="/">Back to Shortner</a></p>
+        </div>
+    </div>
+</body>
+</html>
